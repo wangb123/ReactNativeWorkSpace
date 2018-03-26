@@ -8,6 +8,9 @@ import {
 } from 'react-native';
 
 class Splash extends React.Component {
+    static navigationOptions = {
+    };
+
     componentDidMount() {
         this.skip = setTimeout(this.toMain, 2000)
     }

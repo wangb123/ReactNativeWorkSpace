@@ -9,31 +9,8 @@ import {StackNavigator} from 'react-navigation';
 
 import Splash from './src/js/screen/splash/Splash'
 import Main from './src/js/screen/main/Main'
-import * as ToastAndroid from "react-native/Libraries/Components/ToastAndroid/ToastAndroid.android";
-import * as BackHandler from "react-native/Libraries/Utilities/BackHandler.android";
 
 export default class MyApp extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
-    // componentDidMount() {
-    //     BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
-    // }
-    //
-    // componentWillUnmount() {
-    //     BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid);
-    // }
-    //
-    //
-    // onBackAndroid = () => {
-    //     if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
-    //         return false
-    //     }
-    //     this.lastBackPressed = Date.now();
-    //     ToastAndroid.show("再按一次退出应用", ToastAndroid.SHORT);
-    //     return true
-    // }
 
     render() {
         return (
@@ -61,6 +38,7 @@ const MyStack = StackNavigator({
         title: 'tit',
         //导航栏设置对象, header:null的时候没有，不设置默认使用系统的toolbar
         // header: (<Text>header</Text>),
+        header: null,
         //导航栏的标题, 可以是字符串也可以是个组件，这个东西优先于title显示（Android）
         // headerTitle: 'head_tit',
         // 左上角的返回键文字, 默认是上一个页面的title，设置这个属性会覆盖掉title的值(但是好像没什么卵用)
@@ -85,7 +63,7 @@ const MyStack = StackNavigator({
     //页面切换模式:card: 普通app常用的左右切换；modal: 上下切换
     mode: "card",
     //导航栏的显示模式:float: 无透明效果, 默认；screen: 有渐变透明效果, 如微信QQ的一样；none: 隐藏导航栏
-    headerMode: "none",
+    headerMode: "screen",
     //样式
     // cardStyle: {},
     // 页面切换结束时的回调函数
