@@ -9,8 +9,31 @@ import {StackNavigator} from 'react-navigation';
 
 import Splash from './src/js/screen/splash/Splash'
 import Main from './src/js/screen/main/Main'
+import * as BackHandler from "react-native/Libraries/Utilities/BackHandler.android";
+import * as ToastAndroid from "react-native/Libraries/Components/ToastAndroid/ToastAndroid.android";
+import Search from "./src/js/screen/search/Search";
 
 export default class MyApp extends React.Component {
+
+
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.onBackAndroid);
+    }
+
+
+    onBackAndroid = () => {
+        console.log(this.props);
+        if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+            return false
+        }
+        this.lastBackPressed = Date.now();
+        ToastAndroid.show("再按一次退出应用" + page, ToastAndroid.SHORT);
+        return true
+    }
 
     render() {
         return (
@@ -19,6 +42,7 @@ export default class MyApp extends React.Component {
     }
 }
 
+
 // 定义一个路由作为入口，里面有开屏页和首页
 const MyStack = StackNavigator({
     Splash: {
@@ -26,6 +50,9 @@ const MyStack = StackNavigator({
     },
     Main: {
         screen: Main
+    },
+    Search: {
+        screen: Search
     },
 }, {
     //设置默认的页面组件，必须是上面已注册的页面组件
@@ -69,9 +96,13 @@ const MyStack = StackNavigator({
     // 页面切换结束时的回调函数
     onTransitionStart: (navigation) => {
         console.log('导航开始：' + navigation.state);
+        page++;
     },
     //页面切换结束时的回调函数
     onTransitionEnd: (navigation) => {
         console.log('导航结束：' + navigation.state);
+        page--;
     },
 });
+
+let page = 0;

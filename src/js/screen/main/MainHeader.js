@@ -3,7 +3,9 @@ import {StatusBar, StyleSheet, Text, View} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 class MainHeader extends React.Component {
+
     render() {
+
         return (
             <View>
                 <StatusBar
@@ -12,17 +14,26 @@ class MainHeader extends React.Component {
                     barStyle='light-content'
                 />
                 <View style={styles.head}>
-                    <Text style={{color: 'white', fontSize: 17, paddingHorizontal: 12, fontWeight: '400'}}>微信</Text>
+                    <Text style={{
+                        color: 'white',
+                        fontSize: 17,
+                        paddingHorizontal: 12,
+                        fontWeight: '400'
+                    }}>{this.props.title}</Text>
                     <View style={styles.tool}>
                         <Icon name={'md-search'} size={26} color='white'
-                              style={{paddingHorizontal: 12, paddingVertical: 10}}/>
+                              style={{paddingHorizontal: 12, paddingVertical: 10}}
+                              onPress={() => this.props.navigation.navigate('Search')}/>
                         <Icon name={'md-add'} size={26} color='white'
-                              style={{paddingHorizontal: 20, paddingVertical: 10}}/>
+                              onPress={() => console.log(this.props.navigation)}
+                              style={{paddingHorizontal: 20, paddingVertical: 10}}
+                        />
                     </View>
                 </View>
             </View>
         );
     }
+
 }
 
 export default MainHeader
