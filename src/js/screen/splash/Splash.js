@@ -5,11 +5,11 @@ import {
     StatusBar,
     StyleSheet,
     ImageBackground,
+    Dimensions,
 } from 'react-native';
 
 class Splash extends React.Component {
-    static navigationOptions = {
-    };
+    static navigationOptions = {};
 
     componentDidMount() {
         this.skip = setTimeout(this.toMain, 2000)
@@ -50,8 +50,8 @@ const styles = StyleSheet.create({
             flex: 1,
             alignItems: 'flex-end',
             justifyContent: 'space-between',
-            width: 360,
-            height: 720,
+            width: Dimensions.get('window').width,
+            height: Dimensions.get('window').height,
             paddingTop: 22,
             //不加这句，就是按照屏幕高度自适应
             //加上这几，就是按照屏幕自适应

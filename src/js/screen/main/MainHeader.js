@@ -1,5 +1,5 @@
 import React from "react";
-import {StatusBar, StyleSheet, Text, View} from "react-native";
+import {Dimensions, StatusBar, StyleSheet, Text, View} from "react-native";
 import Icon from "react-native-vector-icons/Ionicons";
 
 class MainHeader extends React.Component {
@@ -46,7 +46,7 @@ const styles = StyleSheet.create(
             alignItems: 'center',
             justifyContent: 'space-between',
             backgroundColor: '#383838',
-            width: 360
+            width: Dimensions.get('window').width,
         },
         tool: {
             flexDirection: 'row',
