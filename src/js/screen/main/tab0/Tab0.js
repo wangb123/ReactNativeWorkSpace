@@ -445,7 +445,7 @@ class Tab0 extends React.Component {
 
     _keyExtractor = (item, index) => index + "";
     _onPressItem = (item) => {
-        this.props.navigation.navigate('Tab1')
+        this.props.screenProps.nav.navigate('Chat');
     }
 }
 
@@ -453,7 +453,6 @@ class Header extends React.Component {
     render() {
         return (
             <View style={[Styles.item, {height: 48, backgroundColor: '#e0e0e0'}]}>
-
                 <View style={[Styles.itemStart, {paddingRight: 0, paddingLeft: 0}]}>
                     <Image style={{
                         width: 32,

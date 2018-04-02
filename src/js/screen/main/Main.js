@@ -3,7 +3,7 @@ import Tab0 from './tab0/Tab0'
 import Tab1 from './tab1/Tab1'
 import Tab2 from './tab2/Tab2'
 import Tab3 from './tab3/Tab3'
-import {StackNavigator, TabBarBottom, TabNavigator} from "react-navigation";
+import {TabBarBottom, TabNavigator} from "react-navigation";
 import MainHeader from "./MainHeader";
 
 
@@ -14,8 +14,9 @@ class MainComponent extends React.Component {
     });
 
     render() {
+        console.log(this.props.navigation);
         return (
-            <MainTabNavigator/>
+            <MainTabNavigator screenProps={{nav: this.props.navigation}}/>
         );
     }
 }
