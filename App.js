@@ -7,7 +7,7 @@
 import React from 'react';
 import {
     Easing,
-    Animated,
+    Animated, View,
 } from 'react-native';
 import {StackNavigator,} from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
@@ -16,8 +16,9 @@ import Splash from './src/js/screen/splash/Splash'
 import Main from './src/js/screen/main/Main'
 import Search from "./src/js/screen/search/Search";
 import Chat from "./src/js/screen/chat/Chat";
-import * as ToastAndroid from "react-native/Libraries/Components/ToastAndroid/ToastAndroid.android";
 import * as BackHandler from "react-native/Libraries/Utilities/BackHandler.android";
+import {MenuProvider} from "react-native-popup-menu";
+import ChatGroupCreate from "./src/js/screen/chat/ChatGroupCreate";
 
 export default class MyApp extends React.Component {
 
@@ -31,19 +32,20 @@ export default class MyApp extends React.Component {
     }
 
     onBackAndroid = () => {
-
-        console.log(this.render());
-        if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
-            return false
-        }
-        this.lastBackPressed = Date.now();
-        ToastAndroid.show("再按一次退出应用", ToastAndroid.SHORT);
-        return true
+        return false;
+        // if (this.lastBackPressed && this.lastBackPressed + 2000 >= Date.now()) {
+        //     return false
+        // }
+        // this.lastBackPressed = Date.now();
+        // ToastAndroid.show("再按一次退出应用", ToastAndroid.SHORT);
+        // return true
     };
 
     render() {
         return (
-            <MyStack/>
+            <MenuProvider style={{flex: 1}}>
+                <MyStack/>
+            </MenuProvider>
         );
     }
 }
@@ -75,6 +77,9 @@ const MyStack = StackNavigator(
         },
         Chat: {
             screen: Chat
+        },
+        ChatGroupCreate: {
+            screen: ChatGroupCreate
         },
     },
     {

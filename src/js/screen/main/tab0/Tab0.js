@@ -468,7 +468,6 @@ class Header extends React.Component {
 class Item extends React.Component {
     _onPress = () => {
         this.props.onPressItem(this.props.data);
-        // console.log(this.props.data.nick)
     };
 
     render() {

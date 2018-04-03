@@ -1,17 +1,16 @@
 import React from 'react';
 import {Text} from "react-native";
 
-class Chat extends React.Component {
+class ChatGroupCreate extends React.Component {
     static navigationOptions = {
-        title: 'Chat',
+        title: 'ChatGroupCreate',
     };
 
     render() {
         return (
-            <Text>Chat</Text>
+            <Text>ChatGroupCreate</Text>
         );
     }
 }
 
-export default Chat
-
+export default ChatGroupCreate
