@@ -7,6 +7,7 @@ import {
     ImageBackground,
     Dimensions,
 } from 'react-native';
+import ChatGroupCreate from "../chat/ChatGroupCreate";
 
 class Splash extends React.Component {
     static navigationOptions = {};

@@ -7,6 +7,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import {Menu, MenuOption, MenuOptions, MenuTrigger} from "react-native-popup-menu";
 import MainMenu from "./MainMenu";
 import ChatGroupCreate from "../chat/ChatGroupCreate";
+import HelpAndFeedback from "../self/HelpAndFeedback";
 
 class MainHeader extends React.Component {
     render() {
@@ -42,16 +43,16 @@ class MainHeader extends React.Component {
                                 <MenuOption onSelect={() => this.props.navigation.navigate('ChatGroupCreate')}>
                                     <MenuItemContent icon='ios-text' text='发起群聊'/>
                                 </MenuOption>
-                                <MenuOption onSelect={() => this.props.navigation.navigate('ChatGroupCreate')}>
+                                <MenuOption onSelect={() => this.props.navigation.navigate('FriendCreate')}>
                                     <MenuItemContent icon='ios-person-add' text='添加朋友'/>
                                 </MenuOption>
-                                <MenuOption onSelect={() => this.props.navigation.navigate('ChatGroupCreate')}>
+                                <MenuOption onSelect={() => this.props.navigation.navigate('QrScan')}>
                                     <MenuItemContent icon='ios-barcode' text='扫一扫'/>
                                 </MenuOption>
-                                <MenuOption onSelect={() => this.props.navigation.navigate('ChatGroupCreate')}>
+                                <MenuOption onSelect={() => this.props.navigation.navigate('MoneyCode')}>
                                     <MenuItemContent icon='ios-filing' text='收付款'/>
                                 </MenuOption>
-                                <MenuOption onSelect={() => this.props.navigation.navigate('ChatGroupCreate')}>
+                                <MenuOption onSelect={() => this.props.navigation.navigate('HelpAndFeedback')}>
                                     <MenuItemContent icon='ios-mail' text='帮助与反馈'/>
                                 </MenuOption>
                             </MenuOptions>
@@ -98,8 +99,7 @@ class MenuItemContent extends React.Component {
 
 export default MainHeader
 
-const
-    styles = StyleSheet.create(
+const styles = StyleSheet.create(
         {
             head: {
                 flexDirection: 'row',

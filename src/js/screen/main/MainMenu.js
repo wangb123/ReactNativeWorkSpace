@@ -34,7 +34,7 @@ export default class MainMenu extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            scaleAnim: new Animated.Value(0.5),
+            scaleAnim: new Animated.Value(0.1),
         };
     }
 
@@ -51,7 +51,7 @@ export default class MainMenu extends React.Component {
         return new Promise(resolve => {
             Animated.timing(this.state.scaleAnim, {
                 duration: CLOSE_ANIM_DURATION,
-                toValue: 0.5,
+                toValue: 0.0,
                 easing: Easing.in(Easing.cubic),
                 useNativeDriver: true
             }).start(resolve);

@@ -86,6 +86,8 @@ const MainTabNavigator = TabNavigator(
             activeTintColor: 'mediumseagreen',
             inactiveTintColor: 'gray',
             labelStyle: {fontSize: 12},
+            activeBackgroundColor:'white',
+            inactiveBackgroundColor:'white',
         },
         tabBarComponent: TabBarBottom,
         tabBarPosition: 'bottom',

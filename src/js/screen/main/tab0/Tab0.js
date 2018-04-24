@@ -1,7 +1,7 @@
 import React from 'react';
 import {
     Dimensions,
-    FlatList, Image,
+    FlatList, Image, PixelRatio,
     StyleSheet,
     Text, TouchableHighlight,
     View
@@ -429,9 +429,9 @@ class Tab0 extends React.Component {
     }
 
     render() {
-        let header = this.state.showHeader ? <Header/> : null;
+        let header = this.state.showHeader ? <Header onPress={this._onHeaderPress}/> : null;
         return (
-            <View>
+            <View style={{backgroundColor: 'white'}}>
                 <FlatList
                     data={this.state.data}
                     renderItem={({item}) => <Item data={item} onPressItem={this._onPressItem}/>}
@@ -446,21 +446,31 @@ class Tab0 extends React.Component {
     _keyExtractor = (item, index) => index + "";
     _onPressItem = (item) => {
         this.props.screenProps.nav.navigate('Chat');
-    }
+    };
+    _onHeaderPress = () => {
+        this.props.screenProps.nav.push('ClientState');
+    };
 }
 
 class Header extends React.Component {
+    _onPress = () => {
+        this.props.onPress(this.props.data);
+    };
+
     render() {
         return (
-            <View style={[Styles.item, {height: 48, backgroundColor: '#e0e0e0'}]}>
-                <View style={[Styles.itemStart, {paddingRight: 0, paddingLeft: 0}]}>
-                    <Image style={{
-                        width: 32,
-                        height: 32,
-                    }} source={require('./computer.png')}/>
+            <TouchableHighlight onPress={this._onPress} underlayColor={'#ddd'} activeOpacity={1}
+                                style={{backgroundColor: '#efeef3'}}>
+                <View style={[Styles.item, {height: 48,}]}>
+                    <View style={[Styles.itemStart, {paddingRight: 0, paddingLeft: 0}]}>
+                        <Image style={{
+                            width: 32,
+                            height: 32,
+                        }} source={require('./computer.png')}/>
+                    </View>
+                    <Text style={Styles.itemLastMsg}>Windows微信已登录</Text>
                 </View>
-                <Text style={Styles.itemLastMsg}>Windows微信已登录</Text>
-            </View>
+            </TouchableHighlight>
         )
     }
 }
@@ -514,7 +524,7 @@ export default Tab0
 const Styles = StyleSheet.create({
     line: {
         width: Dimensions.get('window').width,
-        height: 0.5,
+        height: 1 / PixelRatio.get(),
         backgroundColor: '#e0e0e0'
     },
     item: {

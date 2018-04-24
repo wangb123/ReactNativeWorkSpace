@@ -7,7 +7,7 @@
 import React from 'react';
 import {
     Easing,
-    Animated, View,
+    Animated,
 } from 'react-native';
 import {StackNavigator,} from 'react-navigation';
 import CardStackStyleInterpolator from 'react-navigation/src/views/CardStack/CardStackStyleInterpolator';
@@ -19,6 +19,11 @@ import Chat from "./src/js/screen/chat/Chat";
 import * as BackHandler from "react-native/Libraries/Utilities/BackHandler.android";
 import {MenuProvider} from "react-native-popup-menu";
 import ChatGroupCreate from "./src/js/screen/chat/ChatGroupCreate";
+import FriendCreate from "./src/js/screen/friend/FriendCreate";
+import QrScan from "./src/js/screen/scan/QrScan";
+import MoneyCode from "./src/js/screen/money/MoneyCode";
+import HelpAndFeedback from "./src/js/screen/self/HelpAndFeedback";
+import ClientState from "./src/js/screen/other/ClientState";
 
 export default class MyApp extends React.Component {
 
@@ -63,6 +68,35 @@ const TransitionConfiguration = () => {
     };
 };
 
+
+const router = {
+    Search: {
+        screen: Search
+    },
+    Chat: {
+        screen: Chat
+    },
+    ChatGroupCreate: {
+        screen: ChatGroupCreate
+    },
+    FriendCreate: {
+        screen: FriendCreate
+    },
+    QrScan: {
+        screen: QrScan
+    },
+    MoneyCode: {
+        screen: MoneyCode
+    },
+    HelpAndFeedback: {
+        screen: HelpAndFeedback
+    },
+    ClientState: {
+        screen: ClientState
+    }
+};
+
+
 // 定义一个路由作为入口，里面有开屏页和首页
 const MyStack = StackNavigator(
     {
@@ -72,15 +106,7 @@ const MyStack = StackNavigator(
         Main: {
             screen: Main
         },
-        Search: {
-            screen: Search
-        },
-        Chat: {
-            screen: Chat
-        },
-        ChatGroupCreate: {
-            screen: ChatGroupCreate
-        },
+        ...router,
     },
     {
         //设置默认的页面组件，必须是上面已注册的页面组件
